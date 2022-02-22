@@ -205,11 +205,16 @@ export default {
       const pair = this.getPairByIndices(i1, i2);
       if (pair) {
         const isLeading = pair.leading === i1;
+        let tempValue = input2.value
+
         if (isLeading) {
-          input2.value = this.NaNReplacer(input2.value, value * pair.rate);
+          tempValue = this.NaNReplacer(input2.value, value * pair.rate);
         } else {
-          input2.value = this.NaNReplacer(input2.value, value / pair.rate);
+          tempValue = this.NaNReplacer(input2.value, value / pair.rate);
         }
+
+        tempValue *= 1.1
+        input2.value = tempValue
       }
     },
     //
